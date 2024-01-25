@@ -18,17 +18,16 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/"></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/">Not Yet</a>
+                <a class="nav-link" href="/"></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/">Not Yet</a>
+                <a class="nav-link" href="/"></a>
               </li>
-              <li class="nav-item mr-auto">
-                <a style="background-color: aqua; color: orangered; padding: 0.5rem; display: inline-block" class="nav-link" href="/">Search</a>
-
+              <li class="nav-item">
+                <a class="nav-link" href="/"></a>
               </li>
             </ul>
           </div>
@@ -36,12 +35,66 @@
       </nav>
   
   
-    <LOGIN class="mt-2 mb-4"  style="background-color: #007bff; color: white; padding: 0.5rem; display:block; text-align: center;">Manager's Login Page</h2>
+    <h2 class="mt-2 mb-4"  style="background-color: #007bff; color: white; padding: 0.5rem; display:block; text-align: center;"></h2>
+  
+  <div class="login-container">
+    <form id="loginForm" method="get">
+        <h3>Login As Manager / Player </h3>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+       
+        <label for="role">Role:</label>ç
+        <select  aria-label="Default select example"name="role" id="role" >
+          <option value="manager">Manager</option>
+          <option value="player">Player</option>
+        </select>
+
+
+
+
+<!--
+        <label for="">Club:</label>
+        <select name="CategoryId" id="">
+            <option value="">--SELECT--</option>
+            <%data.forEach(el=>{ %>
+                <option value=<%=el.id%>><%=el.name%> - <%=el.description%></option>
+                <% })%>
+          -->
+                </select><br>
+            <button type="button" onclick="validateLogin()">Login</button>
+        </form>
+        </div>
+
+      </div>
+
+        <script>
+        function validateLogin() {
+        var role =   document.getElementById('role').value;
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+
+
+        if (role === 'manager' || role === 'player') {
+          if (username === 'username' && password === 'password'){
+          alert(`Login as ${role} successful!`)};
+        } else {
+          alert(`Login as ${role}failed. Check your username, password, and role.`);
+        }
 
 
        
 
-  </div>
+        // if (username === 'username' && password === 'password' && role === 'manager') {
+        //     alert('Login sebagai manager berhasil!');
+        // } else {
+        //     alert('Login gagal. Periksa kembali username dan password Anda.');
+        // }
+    }
+</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

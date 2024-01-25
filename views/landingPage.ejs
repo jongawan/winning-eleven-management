@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winning Eleven Football</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        #features,
+        #cta {
+            margin-bottom: 40px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .navbar {
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .navbar-nav {
+            font-size: 1.2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-nav li {
+            margin: 0 15px;
+        }
+
+        .navbar-nav a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .navbar-nav a:hover {
+            color: blue;
+        }
+
+        .navbar-nav a:hover,
+        .navbar-nav a.active {
+            color: blue;
+        }
+
+        .login-btn {
+            margin-left: auto;
+        }
+
+        .carousel-container {
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel img {
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Winning Eleven Management</h1>
+        <p>Your Ultimate Football Team Management Solution</p>
+    </header>
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Winning Eleven</a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/stores">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/stores/add">Add a New Football Club</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/employees">All Players List</a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="login-btn" onclick="redirectToApp()">Login</button>
+            </div>
+        </nav>
+
+        <!-- Carousel -->
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel">
+                    <img src="https://i.pinimg.com/originals/3a/8c/07/3a8c0787ecd948282ae8c7816d62daff.jpg"alt="Club 1">
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Football Management. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

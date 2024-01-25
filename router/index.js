@@ -1,11 +1,15 @@
 const express = require('express');
 const Controller = require('../contollers');
+// const isAuthenticated = require('../middleware/authenticate');
+// const isManager = require('../middleware/isManager');
+// const isPlayer = require('../middleware/isPlayer');
 const router = express.Router();
 
 
 
-router.get('/', Controller.showHomeLoginPage)
-//router.get('/login', Controller.showLoginPage)
+
+router.get('/', Controller.landingPage)
+router.get('/login', Controller.showHomeLoginPage)
 router.get('/stores', Controller.showAllStores)
 router.get('/clubs', Controller.showAllStores)
 
@@ -24,6 +28,19 @@ router.post('/stores/:storeId/edit/:employeeId',Controller.editedEmployeeData)
 
 router.get('/error', Controller.showErrorPage)
 router.get('/search/',Controller.search)
+router.get('/search-players-view',Controller.showSeachForPlayers)
+
+
+
+
+//Player Controller
+
+
+
+
+
+
+
 
 
 // router.use((err, req, res, next) => {

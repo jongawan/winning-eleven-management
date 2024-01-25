@@ -2,10 +2,22 @@ const { Store } = require('../models')
 const { Employee } = require('../models')
 const { Op } = require("sequelize");
 const sequelize = require('sequelize');
+const bcryptjs = require ('bcryptjs')
 
 
 
 class Controller {
+    static landingPage(req, res) {
+
+        try {
+            res.send('Hello World!')
+        } catch (error) {
+            console.log(error)
+            res.send(error)
+        }
+    }
+
+    
 
     static async showHomeLoginPage(req,res){
         try {
@@ -350,9 +362,9 @@ class Controller {
         }
      
         
+
         static async search (req,res){
             try {
-
         
                 let clubSearch = req.query.name;
                 let playerSearch = req.query.firstName;
@@ -370,7 +382,10 @@ class Controller {
                             where:{
                                 firstName: {
                                     [Op.iLike]: `%${playerSearch}%`
-                                }
+                                },
+                                // lastName: {
+                                //     [Op.iLike]: `%${playerSearch}%`
+                                // },
                             }
                         },
                         where:{
@@ -382,19 +397,61 @@ class Controller {
                 
                 }
 
-
-                let combinedTable = await Store.findAll(opt)
-             
-
+                let combinedTable = await Store.findAll(opt)             
                 //res.send(combinedTable)
                 res.render('search', {combinedTable})
-                
-
+            
             } catch (error) {
                 console.log(error)
                 res.send(error) 
             }
         }
+
+
+        static async showSeachForPlayers (req,res){
+            try {
+        
+                let clubSearch = req.query.name;
+                let playerSearch = req.query.firstName;
+                
+                let opt = {
+                    include: {
+                        model: Employee,
+                    }
+                };
+
+                if(clubSearch || playerSearch) {
+                    opt = {
+                        include: {
+                            model: Employee,
+                            where:{
+                                firstName: {
+                                    [Op.iLike]: `%${playerSearch}%`
+                                },
+                                // lastName: {
+                                //     [Op.iLike]: `%${playerSearch}%`
+                                // },
+                            }
+                        },
+                        where:{
+                            name: {
+                                [Op.iLike]: `%${clubSearch}%`
+                            }
+                        }
+                    }
+                
+                }
+
+                let combinedTable = await Store.findAll(opt)             
+                //res.send(combinedTable)
+                res.render('search-players-view', {combinedTable})
+            
+            } catch (error) {
+                console.log(error)
+                res.send(error) 
+            }
+        }
+     
 
 
 
