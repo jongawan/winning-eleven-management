@@ -30,20 +30,18 @@ class Controller {
             let deletedClubName = req.query.deletedclub
             //console.log(deletedClubName)
 
-
             let data = await Store.findAll();
    
             res.render('stores', {data, deletedClubName});
 
-            //throw new Error('Something went wrong');
-
+            //throw new Error('Something went wrong')
 
         } catch (error) {
 
             //next(error);
 
             console.log(error)
-            res.send(error)
+            res.redirect('/error')
           
         }
     }
@@ -60,7 +58,6 @@ class Controller {
                         },
             })
             //console.log(deletedClub.name, ">>> to DELETE")
-
 
             await Store.destroy({
                 where: {
@@ -355,11 +352,42 @@ class Controller {
         
         static async search (req,res){
             try {
-             
-        
-                let combinedTable
 
-                res.render('search')
+        
+                let clubSearch = req.query.name;
+                let playerSearch = req.query.firstName;
+                
+                let opt = {
+                    include: {
+                        model: Employee,
+                    }
+                };
+
+                if(clubSearch || playerSearch) {
+                    opt = {
+                        include: {
+                            model: Employee,
+                            where:{
+                                firstName: {
+                                    [Op.iLike]: `%${playerSearch}%`
+                                }
+                            }
+                        },
+                        where:{
+                            name: {
+                                [Op.iLike]: `%${clubSearch}%`
+                            }
+                        }
+                    }
+                
+                }
+
+
+                let combinedTable = await Store.findAll(opt)
+             
+
+                //res.send(combinedTable)
+                res.render('search', {combinedTable})
                 
 
             } catch (error) {
