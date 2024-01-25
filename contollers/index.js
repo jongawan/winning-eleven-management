@@ -1,8 +1,11 @@
 const { Store } = require('../models')
 const { Employee } = require('../models')
+
 const { Op } = require("sequelize");
 const sequelize = require('sequelize');
-const bcryptjs = require ('bcryptjs')
+const {User} = require('../models/');
+
+//const bcryptjs = require ('bcryptjs')
 
 
 
@@ -32,6 +35,41 @@ class Controller {
             res.send(error)
           
         }
+    }
+
+    static async afterHomeLoginPage(req,res){
+
+        try {
+            
+            let data = req.body
+            //console.log(data)
+            //res.send(data)
+
+            let userData = await User.findOne({
+                where:{
+                    username: data.username,
+                    password: data.password,
+                    role: data.role
+                }
+
+            })
+
+            //res.send(userData)
+            //console.log(userData)
+            //console.log(userData.username, "===" , data.username, "&&", userData.password, "===" ,data.password, "&&" ,userData.role, "===", 'player')
+
+            if(userData) {
+                if(userData.username === data.username && userData.password === data.password && userData.role === 'player'){
+                res.redirect('/search-players-view')
+               }
+        }
+
+        } catch (error) {
+            console.log(error)
+            res.send(error)
+
+        }
+
     }
 
 

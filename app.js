@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const routes = require('./router');
+const session = require ('express-session')
 
 
 //const errorMiddleware = require('./errorMiddleware');

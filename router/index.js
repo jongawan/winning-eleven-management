@@ -10,6 +10,9 @@ const router = express.Router();
 
 router.get('/', Controller.landingPage)
 router.get('/login', Controller.showHomeLoginPage)
+router.post('/login', Controller.afterHomeLoginPage)
+
+
 router.get('/stores', Controller.showAllStores)
 router.get('/clubs', Controller.showAllStores)
 
