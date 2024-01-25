@@ -1,10 +1,15 @@
 const express = require('express');
-const Controller = require('../contollers');
+const Controller = require('../contollers/index')
+const UserController = require('../contollers/UserController')
 const router = express.Router();
 
+router.get('/register',UserController.registerForm)
+router.post('/register',UserController.postRegister)
 
+router.get('/login',UserController.loginForm )
 
-router.get('/', Controller.showHomeLoginPage)
+router.get('/', Controller.landingPage)
+// router.get('/login', Controller.showHomeLoginPage)
 //router.get('/login', Controller.showLoginPage)
 router.get('/stores', Controller.showAllStores)
 router.get('/clubs', Controller.showAllStores)

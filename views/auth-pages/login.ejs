@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+ <html> 
+<%- include('partials/header')%>
+ <body> 
+<%- include('partials/navbar', { navbar: { pageName: 'Register', path: '/register' } }) %>
+ <div class="container mt-5"> 
+<div class="row"> <div class="col-md-5 mx-auto">
+ <h3>Login Dulut Ya!</h3> <hr> 
+<form action="/" method="POST"> 
+<div class="form-group"> <label for="title">Username</label> <input type="text" class="form-control" name="username" placeholder="Ex: Mamia">
+</div> <div class="form-group"> <label for="title">Password</label> <input type="password" class="form-control" name="password" placeholder="Ex: securePassword123"> 
+</div> <button type="submit" class="btn btn-primary">Submit</button>
+ </form> </div> </div> </div>
+<%- include('partials/footer') %>
+
+</body>
+ </html>
+
+<!-- <%- include('footer') %> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('header')%> -->
+
+
+<!-- <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winning Eleven Management - Login Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      background-color: #3a3a3a;
+    }
+
+    #main-holder {
+      width: 50%;
+      height: 70%;
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      background-color: white;
+      border-radius: 7px;
+      box-shadow: 0px 0px 5px 2px black;
+    }
+
+    #login-error-msg-holder {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      justify-items: center;
+      align-items: center;
+    }
+
+    #login-error-msg {
+      width: 23%;
+      text-align: center;
+      margin: 0;
+      padding: 5px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #8a0000;
+      border: 1px solid #8a0000;
+      background-color: #e58f8f;
+      opacity: 0;
+    }
+
+    #error-msg-second-line {
+      display: block;
+    }
+
+    #login-form {
+      align-self: flex-start;
+      display: grid;
+      justify-items: center;
+      align-items: center;
+    }
+
+    .login-form-field::placeholder {
+      color: #3a3a3a;
+    }
+
+    .login-form-field {
+      border: none;
+      border-bottom: 1px solid #3a3a3a;
+      margin-bottom: 10px;
+      border-radius: 3px;
+      outline: none;
+      padding: 0px 0px 5px 5px;
+    }
+
+    #login-form-submit {
+      width: 100%;
+      padding: 7px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      background-color: #3a3a3a;
+      cursor: pointer;
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><h1>Winning Eleven Management</h1></a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">Not Yet</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">Not Yet</a>
+            </li>
+            <li class="nav-item mr-auto">
+              <a style="background-color: aqua; color: orangered; padding: 0.5rem; display: inline-block" class="nav-link" href="/">Search</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <h2 class="mt-2 mb-4" style="background-color: #007bff; color: white; padding: 0.5rem; display:block; text-align: center;">Login</h2>
+
+    <div class="login-container">
+      <form id="loginForm">
+        <h3>Manager's Login Page </h3>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <label for="">Category</label><br>
+        <select name="CategoryId" id="">
+          <option value="">--SELECT--</option>
+          <%data.forEach(el=>{ %>
+          <option value=<%=el.id%>><%=el.name%> - <%=el.description%></option>
+          <% })%>
+        </select><br><br>
+        <button type="button" onclick="validateLogin()">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const loginButton = document.querySelector(".login-container button");
+    const loginErrorMsg = document.getElementById("login-error-msg");
+
+    loginButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      const username = loginForm.username.value;
+      const password = loginForm.password.value;
+
+      if (username === "user" && password === "web_dev") {
+        alert("You have successfully logged in.");
+        location.reload();
+      } else {
+        loginErrorMsg.style.opacity = 1;
+      }
+    });
+
+    function validateLogin() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      if (username === 'user' && password === 'password') {
+        alert('Login berhasil!');
+      } else {
+        alert('Login gagal. Periksa kembali username dan password Anda.');
+      }
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
+<!-- </body>
+
+</html> 

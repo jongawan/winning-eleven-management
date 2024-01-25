@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "postgres",
-    "password": "James1234",
-    "database": "betamidi_db",
-    "host": "127.0.0.1",
+    "password": "postgres",
+    "database": "football",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
