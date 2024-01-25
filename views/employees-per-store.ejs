@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Winning Eleven Management - Players Per Club</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+  <style>
+    /* Custom Styles */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f8f9fa;
+    }
+    .navbar {
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-brand {
+      font-size: 1.5rem;
+    }
+    .navbar-nav {
+      font-size: 1.2rem;
+    }
+    .navbar-nav a:hover {
+      color: blue;
+    }
+    .navbar-nav a:hover,
+    .navbar-nav a.active {
+      color: blue;
+    }
+
+  </style>
+</head>
+ 
+<body>
+
+  <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/stores"><h1>Winning Eleven Management</h1></a>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/stores">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/stores/add">Add a New Club</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/employees">All Players List</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  
+    <h2 class="mt-4 mb-2"  style="background-color: #007bff; color: white; padding: 0.5rem; display:inline-block">Players List In: <%= dataStore[0].name %></h2>
+    <h3 class="mt-2 mb-2"  >Club Code: <%= dataStore[0].code %></h3>
+
+    <% if(deletedEmployeesName){%>
+      <p style="color: red;"><b><%=deletedEmployeesName%> has just been deleted.</b></p>
+    <%} %>
+
+
+
+    <% if(dataEmployee.length === 0){%>
+        <h5 class="mt-2 mb-4" id="no-employee-notification" style="background-color: lightpink; padding: 0.5rem; display:inline-block">This Club Has No Players Yet</h5>
+    <%} %>
+   
+    <a href="/stores/<%= dataStore[0].dataValues.id %>/employees/add"> <h4 class="mt-4 mb-4"  ><u>Add a New Player Here</u></h4></a>
+   
+
+    <!--Total Salary Calculation-->
+    <% let salary = 0 %>
+    <% dataEmployee.forEach((employee) => { %>
+        <% salary += parseFloat(employee.salary) %>
+    <% }) %>
+
+    
+    <h4>Total Employees Fees/Salary: <%= salary.toLocaleString('id-ID', {
+        style: 'currency',
+        currency: 'IDR'
+    }); %></h4>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Position</th>
+          <th scope="col">Salary</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% dataEmployee.forEach((employee) => { %>
+          <tr id="table-check">
+            <td><%= employee.firstName %> <%= employee.lastName %></td>
+            <td><%= employee.position %></td>
+            <td><%= employee.salary.toLocaleString('id-ID', {
+                style: 'currency',
+                currency: 'IDR'
+            }) %></td>
+            <td><a href="/stores/<%=storeId%>/edit/<%=employee.id%>">Edit</a> <a href="/stores/<%=dataStore[0].dataValues.id%>/employees/delete/<%= employee.id%>">Delete</a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+
+    <h2 class="mt-4 mb-2"  style="background-color: aqua; color: orangered; padding: 0.5rem; display:block">PRINT LIST</h2>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  
+  <!-- <script>
+
+    const notifContainer = document.getElementById("no-employee-notification");
+    const table = document.querySelector("#table-check");
+            console.log(table, ">>>>>>>>");
+
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            // Check if the table exists         
+            if (table && table.children.length === 0) {
+                // Table exists, add your event listener or perform other actions
+                console.log("Table doesn't exist!");
+                notifContainer.innerText = `This Store Has No Employees Yet`
+            } else {
+                // Table doesn't exist, you can perform other actions here
+                console.log("Table exists!");
+            }
+        });
+    </script> -->
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Winning Eleven Management - Add New Player Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+</head>
+ 
+<body>
+
+  <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/stores"><h1>Winning Eleven Management</h1></a>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/stores">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/stores/add">Add a New Club</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/employees">All Players List</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  
+  
+    <h2 class="mt-4 mb-4"  style="background-color: #007bff; color: white; padding: 0.5rem; display:inline-block">ADD A NEW PLAYER</h2>
+    <div>
+        <% if (errorMessage) {for (let i = 0; i < errorMessage.length; i++){ %>
+            <p style = "background-color:lightsalmon; display:inline-block; padding: 0.5rem;"><%= errorMessage[i] %></p>
+        <% }} %>
+    </div>
+    
+
+    <h3 class="mt-4 mb-4">For Club: <%= dataStore[0].dataValues.name  %></h3>
+    
+
+    <form action="/stores/<%= reqParamsId %>/employees/add" method="POST">
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"><strong>First Name</strong></label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" rows="3" name="firstName">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"><strong>Last Name</strong></label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" rows="3" name="lastName">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"><strong>Date Of Birth</strong></label>
+            <input type="date" class="form-control" id="exampleFormControlInput1" rows="3" name="dateOfBirth">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"><strong>Experience</strong></label>
+            <select class="form-select" id="exampleFormControlSelect" name="education">
+                <option value="SMA">Novice</option>
+                <option value="S1">Intermediate</option>
+                <option value="S2">Advanced</option>
+                <option value="S3">Professional</option>
+            </select>
+          </div>
+    
+          <!--Radio Buttons-->
+          <div class="mb-3">
+            <label class="form-label"><strong>Position</strong></label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="position" id="locationOption1" value="Goalkeeper">
+              <label class="form-check-label" for="locationOption1">
+                Goalkeeper
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="position" id="locationOption3" value="Defender">
+              <label class="form-check-label" for="locationOption3">
+                Defender
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="position" id="locationOption2" value="Midfielder">
+              <label class="form-check-label" for="locationOption2">
+                Midfielder
+              </label>
+            </div>
+        
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="position" id="locationOption3" value="Striker">
+                <label class="form-check-label" for="locationOption3">
+                  Stiker
+                </label>
+              </div>
+          </div>
+          <!--Salary-->
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"><strong>Salary</strong></label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" rows="3" name="salary">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Add Player To This Club</button>
+
+    </form>
+    
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

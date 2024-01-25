@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Winning Eleven Management - Add a New Club Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+</head>
+ 
+<body>
+
+  <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/stores"><h1>Winning Eleven Management</h1></a>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/stores">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/stores/add">Add a New Club</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/employees">All Players List</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  
+  
+    <h2 class="mt-4 mb-4"  style="background-color: #007bff; color: white; padding: 0.5rem; display:inline-block">CREATE A NEW CLUB</h2>
+    <h3 class="mt-4 mb-4">Fill Out The Form Below To Create a New Club</h3>
+    
+
+    <form action="/stores/add" method="POST">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">What Is The Name Of Your Club?</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" rows="3" name="name"required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Where Is The Club Based?</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" rows="3" name="location"required>
+          </div>
+          <!--Radio Button-->
+          <div class="mb-3">
+            <label class="form-label">Which League Do You Want To Participate In?</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="category" id="locationOption1" value="Serie A">
+              <label class="form-check-label" for="locationOption1">
+                Serie A
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="category" id="locationOption2" value="Laliga">
+              <label class="form-check-label" for="locationOption2">
+                Laliga
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="category" id="locationOption3" value="English Premiere League">
+              <label class="form-check-label" for="locationOption3">
+                English Premiere League
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+    
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
