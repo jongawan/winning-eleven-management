@@ -13,7 +13,8 @@ class Controller {
     static landingPage(req, res) {
 
         try {
-            res.send('Hello World!')
+            //res.send('Hello World!')
+            res.render('landing-page')
         } catch (error) {
             console.log(error)
             res.send(error)
